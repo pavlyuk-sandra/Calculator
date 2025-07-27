@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Калькулятор</title>
+</head>
+<body>
+
+<p>
+    Калькулятор с операциями: +, -, ×, ÷, целочисленное деление и остаток, степень, процент.</p>
+<p>
+    Допустимые входные данные: значения числового типа Number.
+</p>
+
+<!-- поле ввода первого числа -->
+<input id="num1" size="30" style="margin-bottom: 20px;" />
+
+<!-- блок с кнопками -->
+<div id="operator_btns" style="margin-bottom: 20px;">
+    <button id="plus" onclick="op='+'">+</button>
+    <button id="minus" onclick="op='-'">-</button>
+    <button id="times" onclick="op='*'">x</button>
+    <button id="divide" onclick="op='/'">:</button>
+    <button id="floor" onclick="op='//'">//</button>
+    <button id="modulo" onclick="op='%'">%</button>
+    <button id="pow" onclick="op='**'">**</button>
+    <button id="percentOf" onclick="op='%of'">%of</button>
+</div>
+
+<!-- поле ввода второго числа -->
+<input id="num2" size="30" style="margin-bottom: 20px;" />
+<br>
+
+<!-- кнопка для рассчётов -->
+<button onclick="func()">Посчитать</button>
+
+<script>
+    // переменная, в которой хранится выбранное математическое действие
+    var op;
+
+    // функция расчёта
+    function func() {
+        // переменная для результата
+      var result;
+      // получаем первое и второе число
+      var num1 = Number(document.getElementById("num1").value);
+      var num2 = Number(document.getElementById("num2").value);
+      // смотрим, что было в переменной с действием, и действуем исходя из этого
+      switch (op) {
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        case '*':
+          result = num1 * num2;
+          break;
+        case '/':
+          result = num1 / num2;
+          break;
+        case '//':
+          result = Math.floor(num1 / num2);
+          break;
+        case '%':
+          result = num1 % num2;
+          break;
+        case '**':
+          result = Math.pow(num1, num2);
+          break;
+        case '%of':
+          result = (num1 / 100) * num2;
+          break;
+      }
+      document.getElementById("result").innerHTML = result;
+    }
+</script>
+
+<p id="result"></p>
+
+</body>
+</html>
